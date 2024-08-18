@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const dbConnect = () => {
   const connectionParams = { useNewUrlParser: true }
-  mongoose.connect(process.env.DB_URI, connectionParams)
+  const DB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster10.vknr6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster10`
+  mongoose.connect(DB_URI, connectionParams)
 
   mongoose.connection.on('connected', () => {
     console.log('Connected to database sucessfully')
